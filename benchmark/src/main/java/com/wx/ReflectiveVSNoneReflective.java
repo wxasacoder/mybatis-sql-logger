@@ -15,7 +15,15 @@ import java.util.concurrent.TimeUnit;
  * @date 2025/04/25 00:24:28
  */
 public class ReflectiveVSNoneReflective {
-
+    /*
+        Benchmark                                                Mode  Cnt       Score      Error   Units
+        ReflectiveVSNoneReflective.getWay                       thrpt    5  353977.418 ±  460.733  ops/ms
+        ReflectiveVSNoneReflective.reflectWay                   thrpt    5   95759.272 ± 1046.421  ops/ms
+        ReflectiveVSNoneReflective.reflectWayCacheField         thrpt    5  169423.298 ± 1890.430  ops/ms
+        ReflectiveVSNoneReflective.getWayAvgTime                 avgt    5       2.826 ±    0.015   ns/op
+        ReflectiveVSNoneReflective.reflectWayAvgTime             avgt    5      10.804 ±    0.698   ns/op
+        ReflectiveVSNoneReflective.reflectWayCacheFieldAvgTime   avgt    5       5.754 ±    0.115   ns/op
+     */
 
     @Benchmark()
     @BenchmarkMode(Mode.AverageTime)
