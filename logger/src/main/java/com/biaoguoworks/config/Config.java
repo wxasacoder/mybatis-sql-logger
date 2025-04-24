@@ -1,11 +1,13 @@
 package com.biaoguoworks.config;
 
 import com.biaoguoworks.chain.Chain;
+import com.biaoguoworks.chain.DefaultChain;
 import com.biaoguoworks.predict.IsPrinterLogContext;
 import com.biaoguoworks.predict.PredictType;
+import com.biaoguoworks.predict.handler.AbsPrinterLogPredictHandlerAdapter;
 import lombok.Data;
 import org.apache.ibatis.session.Configuration;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 
 import java.util.Set;
 
@@ -20,7 +22,12 @@ public class Config {
 
     private Configuration configuration;
 
-    private Chain<IsPrinterLogContext> printerLogPredictChain;
+    private Chain<IsPrinterLogContext> printerLogPredictChain = new DefaultChain<>();
+
+
+    public void addPredictChainHandler(AbsPrinterLogPredictHandlerAdapter absHandler){
+        printerLogPredictChain.add(absHandler);
+    }
 
     //////  参数 ////////
     PredictType predictType;

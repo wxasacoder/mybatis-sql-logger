@@ -1,0 +1,20 @@
+server:
+  shutdown: graceful
+spring:
+  main:
+    allow-circular-references: true
+  lifecycle:
+    timeout-per-shutdown-phase: 5m
+  profiles:
+    active: local
+  application:
+    name: logger-simple
+  cloud:
+    nacos:
+      config:
+        server-addr: ${NACOS_DISCOVERY_ADDR:192.168.5.66:8848}
+        namespace: ${NACOS_DISCOVERY_NAME_SPACE:b435d065-6a06-433d-8d1f-03c81a70221f}
+        extension-configs:
+          - data-id: ${DATA_ID_0:logger-simple.yaml}
+            group: ${NACOS_CONFIG_GROUP_0:WX_TEST}
+            refresh: ${REFRESH_0:true}

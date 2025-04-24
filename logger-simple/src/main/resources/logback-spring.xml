@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration  xmlns="http://ch.qos.logback/xml/ns/logback"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback
+               https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+
+    <property name="logLevel" value="INFO"/>
+    <property name="logPattern" value="%X{traceId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %logger{20} - %msg%n"/>
+    <property name="appName" value="app-simple"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="mybatis.sql" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="${logLevel}">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

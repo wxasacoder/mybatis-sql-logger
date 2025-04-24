@@ -13,7 +13,7 @@ import com.biaoguoworks.predict.handler.SqlIdsPredict;
 public class CainFactory {
 
 
-    public static Chain<IsPrinterLogContext> creatChain(){
+    public static Chain<IsPrinterLogContext> createDefaultChain(){
         AbsHandler<IsPrinterLogContext> printerAllPredict = new PrinterAllPredict();
         AbsHandler<IsPrinterLogContext> sqlIdsPredict = new SqlIdsPredict();
         return new DefaultChain<IsPrinterLogContext>()
