@@ -16,22 +16,44 @@ import java.util.concurrent.TimeUnit;
  */
 public class ReflectiveVSNoneReflective {
 
+
     @Benchmark()
-    @BenchmarkMode({Mode.Throughput,Mode.AverageTime})
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void getWayAvgTime(Blackhole blackhole,User user) {
+        blackhole.consume(getRole(user));
+    }
+
+    @Benchmark()
+    @BenchmarkMode({Mode.Throughput})
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public void getWay(Blackhole blackhole,User user) {
         blackhole.consume(getRole(user));
     }
 
     @Benchmark()
-    @BenchmarkMode({Mode.Throughput,Mode.AverageTime})
+    @BenchmarkMode({Mode.AverageTime})
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void reflectWayAvgTime(Blackhole blackhole, User user) throws IllegalAccessException {
+        blackhole.consume(getRoleByReflective(user));
+    }
+
+    @Benchmark()
+    @BenchmarkMode({Mode.Throughput})
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public void reflectWay(Blackhole blackhole, User user) throws IllegalAccessException {
         blackhole.consume(getRoleByReflective(user));
     }
 
     @Benchmark()
-    @BenchmarkMode({Mode.Throughput,Mode.AverageTime})
+    @BenchmarkMode({Mode.AverageTime})
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void reflectWayCacheFieldAvgTime(Blackhole blackhole, User user, SharedState sharedState) throws IllegalAccessException {
+        blackhole.consume(getRoleByReflectiveCacheField(sharedState, user));
+    }
+
+    @Benchmark()
+    @BenchmarkMode({Mode.Throughput})
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public void reflectWayCacheField(Blackhole blackhole, User user, SharedState sharedState) throws IllegalAccessException {
         blackhole.consume(getRoleByReflectiveCacheField(sharedState, user));
