@@ -20,6 +20,11 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
+
+    <logger name="sql.parma.log" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
     <root level="${logLevel}">
         <appender-ref ref="STDOUT"/>
     </root>

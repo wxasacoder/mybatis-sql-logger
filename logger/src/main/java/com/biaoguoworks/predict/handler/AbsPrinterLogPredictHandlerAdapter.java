@@ -13,7 +13,6 @@ public abstract class AbsPrinterLogPredictHandlerAdapter extends AbsHandler<IsPr
     @Override
     public void doHandler(IsPrinterLogContext isPrinterLogContext) throws Exception {
         isPrinterLogContext.addResult(predict(isPrinterLogContext));
-        doNext(isPrinterLogContext);
     }
 
     @Override

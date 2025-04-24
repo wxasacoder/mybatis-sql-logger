@@ -67,7 +67,7 @@ public class MybatisSQLoggerAutoConfig {
     public void onApplicationReady(ApplicationReadyEvent event) {
         Optional.ofNullable(event.getApplicationContext().getBean(SqlSessionFactory.class).getConfiguration()).ifPresent(e->{
             String mybatisInterceptorChain = e.getInterceptors().stream().map(Interceptor::getClass).map(Class::toString).collect(Collectors.joining("\n"));
-            config.getLogger().info("mybatis 初始化完成 拦截器的顺序为:\n {}",mybatisInterceptorChain);
+            config.getLogger().info("mybatis 初始化完成 拦截器的顺序为: {}",mybatisInterceptorChain);
         });
     }
 

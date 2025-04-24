@@ -51,10 +51,10 @@ public class ParameterizedSqlLoggingInterceptor implements Interceptor {
             StatementHandler target = PluginUtils.realTarget(invocation.getTarget());
             Optional<MappedStatement> mappedStatement = getMappedStatement(target);
             IsPrinterLogContext isPrinterLogContext = new IsPrinterLogContext().setConfig(config).setMappedStatement(mappedStatement);
-            config.getPrinterLogPredictChain().execChain(new IsPrinterLogContext().setConfig(config).setMappedStatement(mappedStatement));
+            config.getPrinterLogPredictChain().execChain(isPrinterLogContext);
             if(Objects.nonNull(isPrinterLogContext.getPrinterLog()) && isPrinterLogContext.getPrinterLog()){
                 String pretty = pretty(parseSql(target));
-                config.getLogger().debug("{}.parsed==> {}", mappedStatement.map(MappedStatement::getId).orElse(invocation.getMethod().getName()), pretty);
+                config.getLogger().debug("{} parsed ==> {}", mappedStatement.map(MappedStatement::getId).orElse(invocation.getMethod().getName()), pretty);
             }
         }catch (Exception e){
             config.getLogger().error("解析SQL 失败:{}", e);

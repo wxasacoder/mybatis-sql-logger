@@ -30,7 +30,7 @@ public class Config {
     }
 
     //////  参数 ////////
-    PredictType predictType;
+    PredictType predictType = PredictType.OR;
     private Boolean allOpen = false;
     private Set<String> sqlIds;
 
