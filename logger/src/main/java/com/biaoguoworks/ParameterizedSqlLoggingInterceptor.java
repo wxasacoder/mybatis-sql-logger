@@ -3,7 +3,7 @@ package com.biaoguoworks;
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.biaoguoworks.config.Config;
 import com.biaoguoworks.predict.IsPrinterLogContext;
-import org.apache.ibatis.executor.statement.BaseStatementHandler;
+import com.biaoguoworks.utils.ReflectiveUtils;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -14,7 +14,6 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
-import java.lang.reflect.Field;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -49,7 +48,7 @@ public class ParameterizedSqlLoggingInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         try {
             StatementHandler target = PluginUtils.realTarget(invocation.getTarget());
-            Optional<MappedStatement> mappedStatement = getMappedStatement(target);
+            Optional<MappedStatement> mappedStatement = ReflectiveUtils.getMappedStatementMaxEffort(target);
             IsPrinterLogContext isPrinterLogContext = new IsPrinterLogContext().setConfig(config).setMappedStatement(mappedStatement);
             config.getPrinterLogPredictChain().execChain(isPrinterLogContext);
             if(Objects.nonNull(isPrinterLogContext.getPrinterLog()) && isPrinterLogContext.getPrinterLog()){
@@ -144,39 +143,6 @@ public class ParameterizedSqlLoggingInterceptor implements Interceptor {
 
     @Override
     public void setProperties(Properties properties) {
-    }
-
-
-    private Optional<MappedStatement> getMappedStatement(StatementHandler ms) {
-        try {
-            return Optional.ofNullable(ms).map(e->{
-                Field[] declaredFields = ms.getClass().getDeclaredFields();
-                if(Objects.isNull(declaredFields)){
-                    return null;
-                }
-                for (Field routingDelegate : declaredFields) {
-                    routingDelegate.setAccessible(true);
-                    try {
-                        Object o = routingDelegate.get(ms);
-                        if(o instanceof BaseStatementHandler){
-                            for (Field field : o.getClass().getSuperclass().getDeclaredFields()) {
-                                field.setAccessible(true);
-                                Object fieldInBaseHandler = field.get(o);
-                                if(fieldInBaseHandler instanceof MappedStatement){
-                                    return  (MappedStatement) fieldInBaseHandler;
-                                }
-                            }
-                        }
-                    } catch (IllegalAccessException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-                return null;
-            });
-        }catch (Exception e){
-            config.getLogger().error("获取 statementId 失败:{}！", e);
-        }
-        return Optional.empty();
     }
 
 

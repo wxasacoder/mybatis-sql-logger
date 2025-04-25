@@ -44,7 +44,7 @@ public class HasInterceptorCompare {
     @Benchmark()
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MICROSECONDS)
-    public void execQueryWithCustomLog(Blackhole blackhole, TestData testData, MybatisNativeQueryWithCustomLog customLog) {
+    public void execQueryWithCustomLog(Blackhole blackhole, TestData testData, MybatisQueryWithCustomLog customLog) {
         try (SqlSession sqlSession = customLog.getSqlSessionFactory().openSession()) {
             UserDao mapper = sqlSession.getMapper(UserDao.class);
             blackhole.consume(mapper.selectNameAndIds(testData.getName(), testData.getIds()));
@@ -106,9 +106,9 @@ public class HasInterceptorCompare {
     }
 
     @State(Scope.Benchmark)
-    public static class MybatisNativeQueryWithCustomLog{
+    public static class MybatisQueryWithCustomLog{
         SqlSessionFactory sqlSessionFactory;
-        public  MybatisNativeQueryWithCustomLog() {
+        public  MybatisQueryWithCustomLog() {
             try (Reader reader = Resources.getResourceAsReader("mybatis-config-custom.xml")) {
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
                 Configuration configuration = sqlSessionFactory.getConfiguration();
