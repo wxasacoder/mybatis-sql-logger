@@ -51,7 +51,7 @@
   </environments>
 
   <mappers>
-    <mapper class="com.wx.interceptor.UserDao" />
+    <mapper class="com.wx.interceptor.mork.UserDao" />
     <mapper resource="UserMapper.xml"/>
   </mappers>
 

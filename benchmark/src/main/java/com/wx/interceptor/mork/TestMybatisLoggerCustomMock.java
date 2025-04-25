@@ -3,7 +3,6 @@ package com.wx.interceptor.mork;
 import com.biaoguoworks.ParameterizedSqlLoggingInterceptor;
 import com.biaoguoworks.config.Config;
 import com.biaoguoworks.predict.CainFactory;
-import com.wx.interceptor.UserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;

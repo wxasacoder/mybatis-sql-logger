@@ -1,6 +1,5 @@
 package com.wx.interceptor.mork;
 
-import com.wx.interceptor.UserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
