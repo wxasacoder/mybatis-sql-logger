@@ -1,6 +1,10 @@
 package com.wx.interceptor;
 
+import com.biaoguoworks.ParameterizedSqlLoggingInterceptor;
+import com.biaoguoworks.config.Config;
+import com.biaoguoworks.predict.CainFactory;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -11,6 +15,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -30,6 +35,16 @@ public class HasInterceptorCompare {
     @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void execQueryWithNativeLog(Blackhole blackhole, TestData testData, MybatisNativeQueryWithNativeLog nativeQueryWithNativeLog) {
         try (SqlSession sqlSession = nativeQueryWithNativeLog.getSqlSessionFactory().openSession()) {
+            UserDao mapper = sqlSession.getMapper(UserDao.class);
+            blackhole.consume(mapper.selectNameAndIds(testData.getName(), testData.getIds()));
+        }
+    }
+
+    @Benchmark()
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    public void execQueryWithCustomLog(Blackhole blackhole, TestData testData, MybatisNativeQueryWithCustomLog customLog) {
+        try (SqlSession sqlSession = customLog.getSqlSessionFactory().openSession()) {
             UserDao mapper = sqlSession.getMapper(UserDao.class);
             blackhole.consume(mapper.selectNameAndIds(testData.getName(), testData.getIds()));
         }
@@ -79,6 +94,30 @@ public class HasInterceptorCompare {
             try (Reader reader = Resources.getResourceAsReader("mybatis-config-native.xml")) {
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
                 sqlSessionFactory.getConfiguration().setLogPrefix("mybatis.logger");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public SqlSessionFactory getSqlSessionFactory() {
+            return sqlSessionFactory;
+        }
+    }
+
+    @State(Scope.Benchmark)
+    public static class MybatisNativeQueryWithCustomLog{
+        SqlSessionFactory sqlSessionFactory;
+        public  MybatisNativeQueryWithCustomLog() {
+            try (Reader reader = Resources.getResourceAsReader("mybatis-config-custom.xml")) {
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+                Configuration configuration = sqlSessionFactory.getConfiguration();
+                // Interceptor config
+                Config config = new Config();
+                config.setAllOpen(true);
+                config.setConfiguration(configuration);
+                config.setPrinterLogPredictChain(CainFactory.createDefaultChain());
+                config.setLogger(LoggerFactory.getLogger("wx.logger"));
+                configuration.addInterceptor(new ParameterizedSqlLoggingInterceptor(config));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
