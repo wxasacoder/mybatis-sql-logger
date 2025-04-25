@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="logPattern" value="log-wx-%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %logger{20} - %msg%n"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+        wx.log.xxx.xxx.xxx 均是 wx.log 的子log
+        均会继承 wx.log 作为父log的配置
+    -->
+    <logger name="wx.log" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+
+    <logger name="mybatis.logger" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+
+</configuration>
