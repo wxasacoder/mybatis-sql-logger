@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.biaoguoworks.interceptor.mork;
+package com.biaoguoworks.db.mork;
 
 import java.io.InputStream;
 import java.io.Reader;

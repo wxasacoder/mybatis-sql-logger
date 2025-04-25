@@ -2,7 +2,7 @@ package com.biaoguoworks;
 
 import com.biaoguoworks.config.Config;
 import com.biaoguoworks.predict.CainFactory;
-import com.biaoguoworks.interceptor.mork.UserDao;
+import com.biaoguoworks.db.mork.UserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @author wuxin
  * @date 2025/04/25 14:40:22
  */
-public class HasInterceptorCompare {
+public class CustomVsNativeLogger4mybatis {
 
 
     @Benchmark()
@@ -51,7 +51,7 @@ public class HasInterceptorCompare {
     }
 
     public static void main(String[] args) throws RunnerException {
-        Options build = new OptionsBuilder().include(HasInterceptorCompare.class.getSimpleName())
+        Options build = new OptionsBuilder().include(CustomVsNativeLogger4mybatis.class.getSimpleName())
                 .forks(1)
                 .result("./benchmark-mybatis-with-logger.txt")
                 .resultFormat(ResultFormatType.TEXT)

@@ -1,3 +1,3 @@
-Benchmark                                     Mode  Cnt   Score   Error  Units
-HasInterceptorCompare.execQueryWithCustomLog  avgt    5  38.023 ± 0.927  us/op
-HasInterceptorCompare.execQueryWithNativeLog  avgt    5  39.362 ± 1.945  us/op
+Benchmark                                            Mode  Cnt   Score   Error  Units
+CustomVsNativeLogger4mybatis.execQueryWithCustomLog  avgt    5  37.917 ± 0.533  us/op
+CustomVsNativeLogger4mybatis.execQueryWithNativeLog  avgt    5  36.036 ± 0.265  us/op

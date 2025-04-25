@@ -1,4 +1,4 @@
-package com.biaoguoworks.interceptor.mork;
+package com.biaoguoworks.db.mork;
 
 import org.apache.ibatis.annotations.Param;
 
