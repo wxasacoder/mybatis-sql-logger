@@ -1,8 +1,8 @@
-package com.biaoguoworks;
+package com.biaoguoworks.refresher;
 
 import com.biaoguoworks.config.Config;
-import com.biaoguoworks.predict.PredictType;
-import com.biaoguoworks.refresh.AbsRefresh;
+import com.biaoguoworks.predicate.PredictType;
+import com.biaoguoworks.refresh.AbsConfigRefresh;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,9 +15,9 @@ import java.util.Set;
  * @author wuxin
  * @date 2025/04/24 21:25:41
  */
-@ConfigurationProperties(prefix = "mybatis.param.set.sql.log.predict")
+@ConfigurationProperties(prefix = "mybatis.param.set.sql.log.predicate")
 @RefreshScope
-public class NacosConfigRefresher extends AbsRefresh {
+public class NacosConfigRefresher extends AbsConfigRefresh {
 
     private static final Logger log = LoggerFactory.getLogger(NacosConfigRefresher.class);
 
@@ -32,7 +32,7 @@ public class NacosConfigRefresher extends AbsRefresh {
     }
 
     public void setPredictType(String predictType) {
-        log.info("set predict type : {}", predictType);
+        log.info("set predicate type : {}", predictType);
         super.setPredictType(PredictType.valueOf(predictType));
     }
 

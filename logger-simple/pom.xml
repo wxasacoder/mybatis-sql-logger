@@ -17,7 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>3.2.4</spring-boot.version>
         <spring-cloud.version>2023.0.5</spring-cloud.version>
-        <nacos.version>1.4.1</nacos.version>
         <!-- jar versions -->
         <mysql.connector.java.version>9.1.0</mysql.connector.java.version>
         <lombok.version>1.18.30</lombok.version>
@@ -48,11 +47,6 @@
                 <version>3.5.10.1</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-client</artifactId>
-                <version>${nacos.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

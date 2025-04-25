@@ -1,14 +1,14 @@
-package com.biaoguoworks.predict.handler;
+package com.biaoguoworks.predicate.handler;
 
 import com.biaoguoworks.chain.AbsHandler;
-import com.biaoguoworks.predict.IsPrinterLogContext;
-import com.biaoguoworks.predict.PredictType;
+import com.biaoguoworks.predicate.IsPrinterLogContext;
+import com.biaoguoworks.predicate.PredictType;
 
 /**
  * @author wuxin
  * @date 2025/04/24 18:12:42
  */
-public abstract class AbsPrinterLogPredictHandlerAdapter extends AbsHandler<IsPrinterLogContext> {
+public abstract class AbsPrinterLogPredicateHandlerAdapter extends AbsHandler<IsPrinterLogContext> {
 
     @Override
     public void doHandler(IsPrinterLogContext isPrinterLogContext) throws Exception {

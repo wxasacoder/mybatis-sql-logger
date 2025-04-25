@@ -1,7 +1,7 @@
 package com.biaoguoworks.refresh;
 
 import com.biaoguoworks.config.Config;
-import com.biaoguoworks.predict.PredictType;
+import com.biaoguoworks.predicate.PredictType;
 
 import java.util.Set;
 
@@ -9,11 +9,11 @@ import java.util.Set;
  * @author wuxin
  * @date 2025/04/24 18:41:00
  */
-public abstract class AbsRefresh {
+public abstract class AbsConfigRefresh {
 
     private Config config;
 
-    public AbsRefresh(Config config) {
+    public AbsConfigRefresh(Config config) {
         this.config = config;
     }
 

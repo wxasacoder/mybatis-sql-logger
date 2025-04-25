@@ -1,6 +1,6 @@
-package com.biaoguoworks.predict.handler;
+package com.biaoguoworks.predicate.handler;
 
-import com.biaoguoworks.predict.IsPrinterLogContext;
+import com.biaoguoworks.predicate.IsPrinterLogContext;
 import org.apache.ibatis.mapping.MappedStatement;
 
 import java.util.Objects;
@@ -12,7 +12,7 @@ import java.util.Set;
  * @date 2025/04/24 18:24:58
  *
  */
-public class SqlIdsPredict extends AbsPrinterLogPredictHandlerAdapter {
+public class SqIdPermitSetPredicate extends AbsPrinterLogPredicateHandlerAdapter {
 
     private static final String NEVER_DUPLICATED = "129097c6-b65f-43bf-ba30-d2874c17eda1";
 

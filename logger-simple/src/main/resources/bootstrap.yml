@@ -18,3 +18,4 @@ spring:
           - data-id: ${DATA_ID_0:logger-simple.yaml}
             group: ${NACOS_CONFIG_GROUP_0:WX_TEST}
             refresh: ${REFRESH_0:true}
+        enabled: true

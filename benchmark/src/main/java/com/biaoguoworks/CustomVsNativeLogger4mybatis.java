@@ -1,7 +1,7 @@
 package com.biaoguoworks;
 
 import com.biaoguoworks.config.Config;
-import com.biaoguoworks.predict.CainFactory;
+import com.biaoguoworks.predicate.CainFactory;
 import com.biaoguoworks.db.mork.UserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;

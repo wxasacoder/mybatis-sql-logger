@@ -2,9 +2,9 @@ package com.biaoguoworks.config;
 
 import com.biaoguoworks.chain.Chain;
 import com.biaoguoworks.chain.DefaultChain;
-import com.biaoguoworks.predict.IsPrinterLogContext;
-import com.biaoguoworks.predict.PredictType;
-import com.biaoguoworks.predict.handler.AbsPrinterLogPredictHandlerAdapter;
+import com.biaoguoworks.predicate.IsPrinterLogContext;
+import com.biaoguoworks.predicate.PredictType;
+import com.biaoguoworks.predicate.handler.AbsPrinterLogPredicateHandlerAdapter;
 import lombok.Data;
 import org.apache.ibatis.session.Configuration;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ public class Config {
     private Chain<IsPrinterLogContext> printerLogPredictChain = new DefaultChain<>();
 
 
-    public void addPredictChainHandler(AbsPrinterLogPredictHandlerAdapter absHandler){
+    public void addPredictChainHandler(AbsPrinterLogPredicateHandlerAdapter absHandler){
         printerLogPredictChain.add(absHandler);
     }
 

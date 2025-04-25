@@ -1,12 +1,12 @@
-package com.biaoguoworks.predict.handler;
+package com.biaoguoworks.predicate.handler;
 
-import com.biaoguoworks.predict.IsPrinterLogContext;
+import com.biaoguoworks.predicate.IsPrinterLogContext;
 
 /**
  * @author wuxin
  * @date 2025/04/24 17:43:52
  */
-public class PrinterAllPredict extends AbsPrinterLogPredictHandlerAdapter {
+public class LogAllSqlPredicate extends AbsPrinterLogPredicateHandlerAdapter {
 
 
     @Override

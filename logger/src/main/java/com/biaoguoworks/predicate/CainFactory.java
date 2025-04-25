@@ -1,10 +1,10 @@
-package com.biaoguoworks.predict;
+package com.biaoguoworks.predicate;
 
 import com.biaoguoworks.chain.AbsHandler;
 import com.biaoguoworks.chain.Chain;
 import com.biaoguoworks.chain.DefaultChain;
-import com.biaoguoworks.predict.handler.PrinterAllPredict;
-import com.biaoguoworks.predict.handler.SqlIdsPredict;
+import com.biaoguoworks.predicate.handler.LogAllSqlPredicate;
+import com.biaoguoworks.predicate.handler.SqIdPermitSetPredicate;
 
 /**
  * @author wuxin
@@ -14,8 +14,8 @@ public class CainFactory {
 
 
     public static Chain<IsPrinterLogContext> createDefaultChain(){
-        AbsHandler<IsPrinterLogContext> printerAllPredict = new PrinterAllPredict();
-        AbsHandler<IsPrinterLogContext> sqlIdsPredict = new SqlIdsPredict();
+        AbsHandler<IsPrinterLogContext> printerAllPredict = new LogAllSqlPredicate();
+        AbsHandler<IsPrinterLogContext> sqlIdsPredict = new SqIdPermitSetPredicate();
         return new DefaultChain<IsPrinterLogContext>()
                 .add(printerAllPredict)
                 .add(sqlIdsPredict);

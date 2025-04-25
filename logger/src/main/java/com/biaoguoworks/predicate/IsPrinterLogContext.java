@@ -1,4 +1,4 @@
-package com.biaoguoworks.predict;
+package com.biaoguoworks.predicate;
 
 import com.biaoguoworks.config.Config;
 import lombok.Data;

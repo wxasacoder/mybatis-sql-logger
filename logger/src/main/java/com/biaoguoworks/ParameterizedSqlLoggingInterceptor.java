@@ -2,7 +2,7 @@ package com.biaoguoworks;
 
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.biaoguoworks.config.Config;
-import com.biaoguoworks.predict.IsPrinterLogContext;
+import com.biaoguoworks.predicate.IsPrinterLogContext;
 import com.biaoguoworks.utils.ReflectiveUtils;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
