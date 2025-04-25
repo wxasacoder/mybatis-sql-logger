@@ -1,4 +1,4 @@
-package com.wx.interceptor.mork;
+package com.biaoguoworks.interceptor.mork;
 
 import com.biaoguoworks.ParameterizedSqlLoggingInterceptor;
 import com.biaoguoworks.config.Config;

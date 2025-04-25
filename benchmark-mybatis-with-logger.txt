@@ -1,3 +1,3 @@
 Benchmark                                     Mode  Cnt   Score   Error  Units
-HasInterceptorCompare.execQueryWithCustomLog  avgt    5  39.284 ± 1.424  us/op
-HasInterceptorCompare.execQueryWithNativeLog  avgt    5  38.202 ± 0.942  us/op
+HasInterceptorCompare.execQueryWithCustomLog  avgt    5  38.023 ± 0.927  us/op
+HasInterceptorCompare.execQueryWithNativeLog  avgt    5  39.362 ± 1.945  us/op

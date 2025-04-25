@@ -1,7 +1,7 @@
-package com.wx.service;
+package com.biaoguoworks.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wx.domain.User;
+import com.biaoguoworks.domain.User;
 
 
 /**

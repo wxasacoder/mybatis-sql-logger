@@ -1,9 +1,9 @@
-package com.wx.service.impl;
+package com.biaoguoworks.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.wx.dao.UserDao;
-import com.wx.domain.User;
-import com.wx.service.UserService;
+import com.biaoguoworks.dao.UserDao;
+import com.biaoguoworks.domain.User;
+import com.biaoguoworks.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**

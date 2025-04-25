@@ -1,7 +1,7 @@
-package com.wx.dao;
+package com.biaoguoworks.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wx.domain.User;
+import com.biaoguoworks.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 

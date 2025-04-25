@@ -1,8 +1,8 @@
-package com.wx.controller;
+package com.biaoguoworks.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.wx.domain.User;
-import com.wx.service.UserService;
+import com.biaoguoworks.domain.User;
+import com.biaoguoworks.service.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

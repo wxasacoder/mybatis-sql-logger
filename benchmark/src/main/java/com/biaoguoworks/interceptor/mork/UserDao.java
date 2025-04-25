@@ -1,4 +1,4 @@
-package com.wx.interceptor.mork;
+package com.biaoguoworks.interceptor.mork;
 
 import org.apache.ibatis.annotations.Param;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wx.interceptor.mork;
+package com.biaoguoworks.interceptor.mork;
 
 import java.io.InputStream;
 import java.io.Reader;

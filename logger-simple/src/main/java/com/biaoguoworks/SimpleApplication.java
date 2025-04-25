@@ -1,4 +1,4 @@
-package com.wx;
+package com.biaoguoworks;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
-@MapperScan(basePackages = {"com.wx.**.dao"})
+@MapperScan(basePackages = {"com.biaoguoworks.dao"})
 public class SimpleApplication {
     public static void main(String[] args) {
         SpringApplication.run(SimpleApplication.class, args);

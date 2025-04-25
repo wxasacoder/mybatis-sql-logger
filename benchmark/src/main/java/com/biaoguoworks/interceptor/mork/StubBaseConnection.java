@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package com.wx.interceptor.mork;
+package com.biaoguoworks.interceptor.mork;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

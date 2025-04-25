@@ -1,7 +1,6 @@
-package com.wx;
+package com.biaoguoworks;
 
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
-import com.biaoguoworks.ParameterizedSqlLoggingInterceptor;
 import com.biaoguoworks.config.Config;
 import com.biaoguoworks.predict.CainFactory;
 import com.biaoguoworks.refresh.AbsRefresh;

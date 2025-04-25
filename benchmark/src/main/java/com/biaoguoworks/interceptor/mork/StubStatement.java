@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wx.interceptor.mork;
+package com.biaoguoworks.interceptor.mork;
 
 import static com.zaxxer.hikari.util.UtilityElf.quietlySleep;
 

@@ -1,4 +1,4 @@
-package com.wx.domain;
+package com.biaoguoworks.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
