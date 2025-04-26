@@ -1,5 +1,5 @@
 Benchmark                                                       Mode  Cnt      Score     Error  Units
-CustomVsNativeLogger4mybatis.execQueryWithCustomLogThroughput  thrpt    5  24757.491 ± 500.708  ops/s
-CustomVsNativeLogger4mybatis.execQueryWithNativeLogThroughput  thrpt    5  27927.326 ± 441.691  ops/s
-CustomVsNativeLogger4mybatis.execQueryWithCustomLog             avgt    5     38.988 ±   0.444  us/op
-CustomVsNativeLogger4mybatis.execQueryWithNativeLog             avgt    5     36.062 ±   0.408  us/op
+CustomVsNativeLogger4mybatis.execQueryWithCustomLogThroughput  thrpt    5  23844.525 ± 425.974  ops/s
+CustomVsNativeLogger4mybatis.execQueryWithNativeLogThroughput  thrpt    5  26722.451 ± 818.343  ops/s
+CustomVsNativeLogger4mybatis.execQueryWithCustomLog             avgt    5     43.480 ±   2.969  us/op
+CustomVsNativeLogger4mybatis.execQueryWithNativeLog             avgt    5     44.323 ±   0.636  us/op

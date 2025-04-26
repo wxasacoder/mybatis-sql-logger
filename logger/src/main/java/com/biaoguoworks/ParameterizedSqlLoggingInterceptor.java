@@ -55,6 +55,12 @@ public class ParameterizedSqlLoggingInterceptor implements Interceptor {
                 String pretty = pretty(parseSql(target));
                 config.getLogger().debug("{} parsed ==> {}", mappedStatement.map(MappedStatement::getId).orElse(invocation.getMethod().getName()), pretty);
             }
+            mappedStatement.ifPresent(s->{
+                if (!s.getStatementLog().isDebugEnabled()) {
+                    Statement statement = (Statement) invocation.getArgs()[0];
+                    invocation.getArgs()[0] = StatementLogger.newInstance(statement, config, s.getId());
+                }
+            });
         }catch (Exception e){
             config.getLogger().error("解析SQL 失败:{}", e);
         }
