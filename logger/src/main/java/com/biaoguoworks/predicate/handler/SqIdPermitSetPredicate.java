@@ -22,6 +22,9 @@ public class SqIdPermitSetPredicate extends AbsPrinterLogPredicateHandlerAdapter
         if(Objects.isNull(sqlIds) || sqlIds.size() == 0){
             return false;
         }
+        if(Objects.isNull(context.getMappedStatement())){
+            return false;
+        }
         return sqlIds.contains(context.getMappedStatement().map(MappedStatement::getId).orElse(NEVER_DUPLICATED));
     }
 }
