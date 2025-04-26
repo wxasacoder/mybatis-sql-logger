@@ -50,6 +50,26 @@ public class CustomVsNativeLogger4mybatis {
         }
     }
 
+    @Benchmark()
+    @BenchmarkMode(Mode.Throughput)
+    @OutputTimeUnit(TimeUnit.SECONDS)
+    public void execQueryWithNativeLogThroughput(Blackhole blackhole, TestData testData, MybatisNativeQueryWithNativeLog nativeQueryWithNativeLog) {
+        try (SqlSession sqlSession = nativeQueryWithNativeLog.getSqlSessionFactory().openSession()) {
+            UserDao mapper = sqlSession.getMapper(UserDao.class);
+            blackhole.consume(mapper.selectNameAndIds(testData.getName(), testData.getIds()));
+        }
+    }
+
+    @Benchmark()
+    @BenchmarkMode(Mode.Throughput)
+    @OutputTimeUnit(TimeUnit.SECONDS)
+    public void execQueryWithCustomLogThroughput(Blackhole blackhole, TestData testData, MybatisQueryWithCustomLog customLog) {
+        try (SqlSession sqlSession = customLog.getSqlSessionFactory().openSession()) {
+            UserDao mapper = sqlSession.getMapper(UserDao.class);
+            blackhole.consume(mapper.selectNameAndIds(testData.getName(), testData.getIds()));
+        }
+    }
+
     public static void main(String[] args) throws RunnerException {
         Options build = new OptionsBuilder().include(CustomVsNativeLogger4mybatis.class.getSimpleName())
                 .forks(1)
