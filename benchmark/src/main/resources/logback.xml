@@ -10,10 +10,6 @@
         </encoder>
     </appender>
 
-    <!--
-        wx.log.xxx.xxx.xxx 均是 wx.log 的子log
-        均会继承 wx.log 作为父log的配置
-    -->
     <logger name="wx.logger" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="STDOUT"/>
