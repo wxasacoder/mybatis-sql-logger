@@ -32,11 +32,14 @@ public class PredictChainTest {
         add("insertBatch");
     }};
 
+
     MappedStatement sqlIdContains = new MappedStatement.Builder(new Configuration(), "selectUserIds", parameterObject -> null, null).build();
     MappedStatement sqlIdNotContains = new MappedStatement.Builder(new Configuration(), "selectUserIdss", parameterObject -> null, null).build();
 
 
     Chain<IsPrinterLogContext> defaultChain = null;
+
+    Config config = null;
 
     @Before
     public void beforeAll(){
@@ -45,6 +48,8 @@ public class PredictChainTest {
         defaultChain = new DefaultChain<IsPrinterLogContext>()
                 .add(printerAllPredict)
                 .add(sqlIdsPredict);
+         config = new Config();
+         config.setLogger(logger);
     }
 
     /**
@@ -55,8 +60,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenTrueTypeOR() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(true);
         config.setPredictType(PredictType.OR);
         IsPrinterLogContext isPrinterLogContext = new IsPrinterLogContext();
@@ -74,8 +77,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenFalseTypeOrSqlIdContains() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(false);
         config.setPredictType(PredictType.OR);
         config.setSqlIds(sqlIds);
@@ -96,8 +97,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenFalseTypeOrSqlIdNotContains() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(false);
         config.setPredictType(PredictType.OR);
         config.setSqlIds(sqlIds);
@@ -118,8 +117,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenTrueTypeAnd() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(true);
         config.setPredictType(PredictType.AND);
         IsPrinterLogContext isPrinterLogContext = new IsPrinterLogContext();
@@ -137,8 +134,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenFalseTypeAnd() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(false);
         config.setSqlIds(sqlIds);
         config.setPredictType(PredictType.AND);
@@ -159,8 +154,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenTrueTypeAndSQLIdContains() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(true);
         config.setSqlIds(sqlIds);
         config.setPredictType(PredictType.AND);
@@ -180,8 +173,6 @@ public class PredictChainTest {
      */
     @Test
     public void allOpenTrueTypeAndSQlIDNotContains() throws Exception {
-        Config config = new Config();
-        config.setLogger(logger);
         config.setAllOpen(true);
         config.setSqlIds(sqlIds);
         config.setPredictType(PredictType.AND);
