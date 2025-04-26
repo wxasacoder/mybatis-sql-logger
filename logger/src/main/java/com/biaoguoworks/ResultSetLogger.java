@@ -30,7 +30,7 @@ public final class ResultSetLogger implements InvocationHandler {
                     if ((Boolean)o) {
                         ++this.rows;
                     } else {
-                        this.config.getLogger().debug("{}.QueryCount: {}",sqlId, this.rows);
+                        this.config.getLogger().debug("{} <== QueryCount: {}",sqlId, this.rows);
                     }
                 }
                 return o;

@@ -14,16 +14,10 @@
  * limitations under the License.
  */
 
-package com.biaoguoworks.db.mork;
+package com.biaoguoworks;
 
-import static com.zaxxer.hikari.util.UtilityElf.quietlySleep;
+import java.sql.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.sql.SQLWarning;
-import java.sql.Statement;
 
 /**
  *
@@ -178,7 +172,7 @@ public class StubStatement implements Statement
    {
       checkClosed();
       if (simulatedQueryTime > 0) {
-         quietlySleep(simulatedQueryTime);
+         UtilityElf.quietlySleep(simulatedQueryTime);
       }
       connection.commit();
       return false;

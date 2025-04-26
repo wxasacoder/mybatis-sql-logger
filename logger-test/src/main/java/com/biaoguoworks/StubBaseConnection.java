@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package com.biaoguoworks.db.mork;
+package com.biaoguoworks;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -21,6 +21,20 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+  <!--  <plugins>-->
+<!--    <plugin-->
+<!--            interceptor="org.apache.ibatis.plugin.PluginTest$SqlInterceptor" />-->
+<!--    <plugin-->
+<!--            interceptor="org.apache.ibatis.plugin.PluginTest$SqlInterceptorSecond" />-->
+<!--  </plugins>-->
+
+
+
+
+  <settings>
+    <setting name="logPrefix" value="mybatis.logger."/>
+    <setting name="logImpl" value="SLF4J"/>
+  </settings>
 
   <environments default="development">
     <environment id="development">
@@ -37,7 +51,7 @@
   </environments>
 
   <mappers>
-    <mapper class="com.biaoguoworks.db.mork.UserDao" />
+    <mapper class="com.biaoguoworks.UserDao" />
     <mapper resource="UserMapper.xml"/>
   </mappers>
 

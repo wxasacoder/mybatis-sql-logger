@@ -37,7 +37,7 @@
   </environments>
 
   <mappers>
-    <mapper class="com.biaoguoworks.db.mork.UserDao" />
+    <mapper class="com.biaoguoworks.UserDao" />
     <mapper resource="UserMapper.xml"/>
   </mappers>
 
