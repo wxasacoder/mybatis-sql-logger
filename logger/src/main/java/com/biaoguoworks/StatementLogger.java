@@ -59,7 +59,7 @@ public final class StatementLogger implements InvocationHandler {
       } else if ("getUpdateCount".equals(method.getName())) {
         int updateCount = (Integer) method.invoke(statement, params);
         if (updateCount != -1) {
-          config.getLogger().debug("{}.UpdateCount: {}", sqlId, updateCount);
+          config.getLogger().debug("{} <== UpdateCount: {}", sqlId, updateCount);
         }
         return updateCount;
       } else {

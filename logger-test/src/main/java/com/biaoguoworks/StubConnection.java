@@ -105,10 +105,11 @@ public class StubConnection extends StubBaseConnection
    @Override
    public CallableStatement prepareCall(String sql) throws SQLException
    {
-      if (throwException) {
-         throw new SQLException();
-      }
-      return null;
+      return new StubCallableStatement();
+//      if (throwException) {
+//         throw new SQLException();
+//      }
+//      return null;
    }
 
    /** {@inheritDoc} */

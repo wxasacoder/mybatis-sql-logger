@@ -19,6 +19,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.biaoguoworks.UserDao">
 
+  <insert id="insert">
+    insert into user(name) values (#{user.name})
+  </insert>
+
+  <insert id="insertBatch">
+    insert into user(name) values
+    <foreach collection="users" index="index" item="item" separator=",">
+      (#{item.name})
+    </foreach>
+  </insert>
+
+  <update id="update">
+    update user set name = #{user.name} and where id = #{user.id}
+  </update>
+
+
+  <update id="batchUpdateUsers" parameterType="list">
+    <foreach collection="users" item="item" separator=";">
+      update user
+      set name = #{item.name}
+      where id = #{item.id}
+    </foreach>
+  </update>
+
+  <update id="updateBatch" parameterType="list">
+    update user
+    set name =
+    <foreach collection="users" item="item" separator=" " open="case id" close="end">
+      when #{item.id} then #{item.name}
+    </foreach>
+    where id in
+    <foreach collection="users" item="item" separator="," open="(" close=")">
+      #{item.id}
+    </foreach>
+  </update>
+
 
   <select id="selectNameAndIds" resultType="java.lang.String">
     select name from user
@@ -34,5 +70,11 @@
       </if>
     </where>
   </select>
+
+  <insert id="insertByProcedure" statementType="CALLABLE">
+      CALL insert_user(#{name, mode=IN, jdbcType=VARCHAR})
+  </insert>
+
+
 
 </mapper>
