@@ -12,6 +12,7 @@ public abstract class AbsPrinterLogPredicateHandlerAdapter extends AbsHandler<Is
 
     @Override
     public void doHandler(IsPrinterLogContext isPrinterLogContext) throws Exception {
+        isPrinterLogContext.addPredictCount(1);
         isPrinterLogContext.addResult(predict(isPrinterLogContext));
     }
 

@@ -15,10 +15,14 @@ import java.util.Optional;
 @Accessors(chain = true)
 public class IsPrinterLogContext {
 
+    // ----------------- config ------------------
     private Optional<MappedStatement> mappedStatement;
     private Config config;
 
-    /////// result //////
+    // ------------------ result ------------------
+    // log count
+    private int predictCount = 0;
+    // printer log or not
     private Boolean printerLog;
 
     public boolean addResult(boolean singleResult){
@@ -34,7 +38,9 @@ public class IsPrinterLogContext {
         return this.printerLog;
     }
 
-
+    public void  addPredictCount(int predictCount){
+        this.predictCount+=predictCount;
+    }
 
 
 }

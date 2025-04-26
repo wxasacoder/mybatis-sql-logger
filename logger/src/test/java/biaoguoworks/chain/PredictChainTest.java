@@ -47,7 +47,12 @@ public class PredictChainTest {
                 .add(sqlIdsPredict);
     }
 
-
+    /**
+     * allOpen: true
+     * sqlIdContains: false
+     * predictType: OR
+     * @throws Exception
+     */
     @Test
     public void allOpenTrueTypeOR() throws Exception {
         Config config = new Config();
@@ -58,8 +63,15 @@ public class PredictChainTest {
         isPrinterLogContext.setConfig(config);
         defaultChain.execChain(isPrinterLogContext);
         Assert.assertTrue(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 1);
     }
 
+    /**
+     * allOpen: false
+     * sqlIdContains: true
+     * predictType: OR
+     * @throws Exception
+     */
     @Test
     public void allOpenFalseTypeOrSqlIdContains() throws Exception {
         Config config = new Config();
@@ -72,9 +84,16 @@ public class PredictChainTest {
         isPrinterLogContext.setMappedStatement(Optional.ofNullable(sqlIdContains));
         defaultChain.execChain(isPrinterLogContext);
         Assert.assertTrue(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 2);
+
     }
 
-
+    /**
+     * allOpen: false
+     * sqlIdContains: false
+     * predictType: OR
+     * @throws Exception
+     */
     @Test
     public void allOpenFalseTypeOrSqlIdNotContains() throws Exception {
         Config config = new Config();
@@ -87,8 +106,16 @@ public class PredictChainTest {
         isPrinterLogContext.setMappedStatement(Optional.ofNullable(sqlIdNotContains));
         defaultChain.execChain(isPrinterLogContext);
         Assert.assertFalse(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 2);
     }
 
+
+    /**
+     * allOpen: true
+     * sqlIdContains: false
+     * predictType: AND
+     * @throws Exception
+     */
     @Test
     public void allOpenTrueTypeAnd() throws Exception {
         Config config = new Config();
@@ -99,8 +126,37 @@ public class PredictChainTest {
         isPrinterLogContext.setConfig(config);
         defaultChain.execChain(isPrinterLogContext);
         Assert.assertFalse(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 2);
     }
 
+    /**
+     * allOpen: false
+     * sqlIdContains: true
+     * predictType: AND
+     * @throws Exception
+     */
+    @Test
+    public void allOpenFalseTypeAnd() throws Exception {
+        Config config = new Config();
+        config.setLogger(logger);
+        config.setAllOpen(false);
+        config.setSqlIds(sqlIds);
+        config.setPredictType(PredictType.AND);
+        IsPrinterLogContext isPrinterLogContext = new IsPrinterLogContext();
+        isPrinterLogContext.setConfig(config);
+        isPrinterLogContext.setMappedStatement(Optional.ofNullable(sqlIdContains));
+        defaultChain.execChain(isPrinterLogContext);
+        Assert.assertFalse(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 1);
+    }
+
+
+    /**
+     * allOpen: true
+     * sqlIdContains: true
+     * predictType: AND
+     * @throws Exception
+     */
     @Test
     public void allOpenTrueTypeAndSQLIdContains() throws Exception {
         Config config = new Config();
@@ -113,8 +169,15 @@ public class PredictChainTest {
         isPrinterLogContext.setMappedStatement(Optional.ofNullable(sqlIdContains));
         defaultChain.execChain(isPrinterLogContext);
         Assert.assertTrue(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 2);
     }
 
+    /**
+     * allOpen: true
+     * sqlIdContains: false
+     * predictType: AND
+     * @throws Exception
+     */
     @Test
     public void allOpenTrueTypeAndSQlIDNotContains() throws Exception {
         Config config = new Config();
@@ -127,5 +190,6 @@ public class PredictChainTest {
         isPrinterLogContext.setMappedStatement(Optional.ofNullable(sqlIdNotContains));
         defaultChain.execChain(isPrinterLogContext);
         Assert.assertFalse(isPrinterLogContext.getPrinterLog());
+        Assert.assertTrue(isPrinterLogContext.getPredictCount() == 2);
     }
 }
