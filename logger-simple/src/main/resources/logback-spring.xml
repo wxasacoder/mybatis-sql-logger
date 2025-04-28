@@ -16,7 +16,7 @@
     </appender>
 
 
-    <logger name="mybatis.sql" level="DEBUG" additivity="false">
+    <logger name="mybatis.sql" level="INFO" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
