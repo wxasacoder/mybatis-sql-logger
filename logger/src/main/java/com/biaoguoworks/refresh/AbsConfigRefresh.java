@@ -3,7 +3,11 @@ package com.biaoguoworks.refresh;
 import com.biaoguoworks.config.Config;
 import com.biaoguoworks.predicate.PredictType;
 
+import java.util.Comparator;
+import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author wuxin
@@ -27,5 +31,13 @@ public abstract class AbsConfigRefresh {
         this.config.setSqlIds(sqlIds);
     }
 
+    public void setSqlIdPrefix(Set<String> sqlIdPrefix){
+        if(Objects.nonNull(sqlIdPrefix)){
+            sqlIdPrefix = sqlIdPrefix.stream()
+                    .sorted(Comparator.comparing(a -> (a.length())))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+        }
+        this.config.setSqlIdPrefix(sqlIdPrefix);
+    }
 
 }

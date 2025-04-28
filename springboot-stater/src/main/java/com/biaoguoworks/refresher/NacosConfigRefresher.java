@@ -46,4 +46,9 @@ public class NacosConfigRefresher extends AbsConfigRefresh {
         log.info("set sqlIds : {}", sqlIds);
         super.setSqlIds(sqlIds);
     }
+
+    @Override
+    public void setSqlIdPrefix(Set<String> sqlIdPrefix) {
+        super.setSqlIdPrefix(sqlIdPrefix);
+    }
 }

@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * @author wuxin
  * @date 2025/04/24 23:08:05
@@ -36,8 +40,11 @@ public class UserController {
     }
     @GetMapping("/get/user/insert")
     public Boolean userInsert() {
-        User user = new User();
-        user.setName("这是个测试");
-        return userService.save(user);
+        List<User> collect = IntStream.range(1, 100).mapToObj(r -> {
+            User user = new User();
+            user.setName("我是用户" + r);
+            return user;
+        }).collect(Collectors.toList());
+        return userService.saveBatch(collect);
     }
 }

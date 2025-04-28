@@ -33,5 +33,6 @@ public class Config {
     PredictType predictType = PredictType.OR;
     private Boolean allOpen = false;
     private Set<String> sqlIds;
+    private Set<String> sqlIdPrefix;
 
 }
