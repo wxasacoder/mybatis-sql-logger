@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.biaoguoworks</groupId>
-    <artifactId>springboot-stater</artifactId>
+    <artifactId>sql-logger-stater</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 

@@ -12,7 +12,7 @@
 
     <modules>
         <module>logger</module>
-        <module>springboot-stater</module>
+        <module>sql-logger-stater</module>
         <module>logger-simple</module>
         <module>benchmark</module>
         <module>logger-test</module>
