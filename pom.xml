@@ -15,7 +15,6 @@
         <module>sql-logger-stater</module>
         <module>logger-simple</module>
         <module>benchmark</module>
-        <module>logger-test</module>
     </modules>
 
     <properties>

@@ -1,4 +1,4 @@
-package com.biaoguoworks;
+package com.biaoguoworks.db.mork.driver;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
